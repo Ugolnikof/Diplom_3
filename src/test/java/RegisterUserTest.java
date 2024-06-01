@@ -57,6 +57,30 @@ public class RegisterUserTest {
         token = mainPage.getAccessTokenFromLocalStorage();
     }
 
+    @Test
+    public void registerUserWithShortPassword() {
+        // укорачиваю пароль
+        String newPassword = user.getPassword().substring(0, 5);
+        user.setPassword(newPassword);
+
+        WebDriver driver = driverRule.getDriver();
+
+        // Создание пользователя
+        MainPage mainPage = new MainPage(driver);
+        mainPage.open()
+                .clickOnButtonEnterToAccount();
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickOnLinkToAuthorize();
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.enterName(user)
+                .enterEmail(user)
+                .enterPassword(user)
+                .clickOnButtonToRegister()
+                .checkErrorInvalidPassword();
+    }
+
     @After
     @DisplayName("delete User")
     public void deleteUser() {

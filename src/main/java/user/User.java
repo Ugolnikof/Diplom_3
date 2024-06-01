@@ -25,15 +25,6 @@ public class User {
                 .build();
     }
 
-    public static User getRandomUserWithShortPassword() {
-        Faker faker = new Faker();
-        return User.builder()
-                .email(faker.internet().emailAddress())
-                .password(faker.internet().password(3, 5))
-                .name(faker.name().firstName())
-                .build();
-    }
-
     public static String getToken(ValidatableResponse response) {
         return response
                 .extract()
