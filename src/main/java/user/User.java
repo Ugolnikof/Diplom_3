@@ -1,6 +1,7 @@
 package user;
 
 import com.github.javafaker.Faker;
+import io.restassured.response.ValidatableResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,5 +34,10 @@ public class User {
                 .build();
     }
 
+    public static String getToken(ValidatableResponse response) {
+        return response
+                .extract()
+                .path("accessToken");
+    }
 
 }

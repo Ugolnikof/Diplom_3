@@ -18,4 +18,15 @@ public class UserProperties {
                 .delete(EnvConfig.USER_PATH)
                 .then().log().all();
     }
+
+    @Step("create User")
+    public ValidatableResponse createNewUser(User user) {
+        return given().log().all()
+                .contentType(ContentType.JSON)
+                .baseUri(EnvConfig.BASE_URL)
+                .body(user)
+                .when()
+                .post(EnvConfig.AUTH_PATH + "/register")
+                .then().log().all();
+    }
 }

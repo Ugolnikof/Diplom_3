@@ -23,6 +23,7 @@ public class RegisterPage {
     private final By buttonToRegister = By.xpath(".//button[text()='Зарегистрироваться']");
     private final By errorMessageWrongPassword = By.xpath(".//p[text()='Некорректный пароль']");
     private final By redBorderFieldEmail = By.xpath(".//div[contains(@class, 'input_status_error')]");
+    private final By linkToEnterToAccount = By.xpath(".//a[text()='Войти']");
 
     public RegisterPage enterPassword(User user) {
         driver.findElement(fieldPassword).sendKeys(user.getPassword());
@@ -57,5 +58,12 @@ public class RegisterPage {
 
         assertTrue(driver.findElement(errorMessageWrongPassword).isDisplayed());
         assertTrue(driver.findElement(redBorderFieldEmail).isDisplayed());
+    }
+
+    public void clickOnLinkToEnterAccount() {
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+                .until(ExpectedConditions.visibilityOfElementLocated(linkToEnterToAccount));
+
+        driver.findElement(linkToEnterToAccount).click();
     }
 }

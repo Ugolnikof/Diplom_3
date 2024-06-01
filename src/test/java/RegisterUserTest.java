@@ -50,10 +50,9 @@ public class RegisterUserTest {
 
 
         // Логин пользователя
-        registerPage.enterEmail(user)
-                .enterPassword(user);
-
-        loginPage.clickOnButtonEnter();
+        loginPage.enterEmail(user)
+                .enterPassword(user)
+                .clickOnButtonEnter();
 
         token = mainPage.getAccessTokenFromLocalStorage();
     }
