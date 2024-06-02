@@ -27,13 +27,11 @@ public class RegisterPage {
 
     public RegisterPage enterPassword(User user) {
         driver.findElement(fieldPassword).sendKeys(user.getPassword());
-
         return this;
     }
 
     public RegisterPage enterEmail(User user) {
         driver.findElement(fieldEmail).sendKeys(user.getEmail());
-
         return this;
     }
 
@@ -42,13 +40,11 @@ public class RegisterPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(fieldName));
 
         driver.findElement(fieldName).sendKeys(user.getName());
-
         return this;
     }
 
     public RegisterPage clickOnButtonToRegister() {
         driver.findElement(buttonToRegister).click();
-
         return this;
     }
 

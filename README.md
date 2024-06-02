@@ -7,13 +7,6 @@
 mvn test
 ```
 
-# запуск в FireFox
-
-```bash
-mvn -Dbrowser=firefox test
-```
-
-
 # запуск в Yandex
 
 ```bash

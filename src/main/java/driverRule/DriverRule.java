@@ -1,16 +1,17 @@
 package driverRule;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import lombok.Data;
+import lombok.Getter;
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-@Data
+@Getter
 public class DriverRule extends ExternalResource {
     private WebDriver driver;
+
 
     @Override
     protected void before() throws Throwable {

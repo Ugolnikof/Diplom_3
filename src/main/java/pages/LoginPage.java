@@ -43,13 +43,11 @@ public class LoginPage {
 
     public LoginPage enterPassword(User user) {
         driver.findElement(fieldPassword).sendKeys(user.getPassword());
-
         return this;
     }
 
     public LoginPage enterEmail(User user) {
         driver.findElement(fieldEmail).sendKeys(user.getEmail());
-
         return this;
     }
 
@@ -58,5 +56,12 @@ public class LoginPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(linkToRecoveryPassword));
 
         driver.findElement(linkToRecoveryPassword).click();
+    }
+
+    public void checkLogoutSuccessfully() {
+        new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
+                .until(ExpectedConditions.visibilityOfElementLocated(buttonEnter));
+
+        assertTrue(driver.findElement(buttonEnter).isDisplayed());
     }
 }
