@@ -1,6 +1,7 @@
 package pages;
 
 import configure.EnvConfig;
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.openqa.selenium.By;
@@ -25,16 +26,19 @@ public class RegisterPage {
     private final By redBorderFieldEmail = By.xpath(".//div[contains(@class, 'input_status_error')]");
     private final By linkToEnterToAccount = By.xpath(".//a[text()='Войти']");
 
+    @Step("enter password")
     public RegisterPage enterPassword(User user) {
         driver.findElement(fieldPassword).sendKeys(user.getPassword());
         return this;
     }
 
+    @Step("enter email")
     public RegisterPage enterEmail(User user) {
         driver.findElement(fieldEmail).sendKeys(user.getEmail());
         return this;
     }
 
+    @Step("enter name")
     public RegisterPage enterName(User user) {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(fieldName));
@@ -43,11 +47,13 @@ public class RegisterPage {
         return this;
     }
 
+    @Step("click on button to register")
     public RegisterPage clickOnButtonToRegister() {
         driver.findElement(buttonToRegister).click();
         return this;
     }
 
+    @Step("check error invalid password")
     public void checkErrorInvalidPassword() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(errorMessageWrongPassword));
@@ -56,6 +62,7 @@ public class RegisterPage {
         assertTrue(driver.findElement(redBorderFieldEmail).isDisplayed());
     }
 
+    @Step("click on link to enter account")
     public void clickOnLinkToEnterAccount() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(linkToEnterToAccount));

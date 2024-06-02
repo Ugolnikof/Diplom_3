@@ -29,6 +29,7 @@ public class RegisterUserTest {
     }
 
     @Test
+    @DisplayName("register User")
     public void registerUser() {
         WebDriver driver = driverRule.getDriver();
 
@@ -58,6 +59,7 @@ public class RegisterUserTest {
     }
 
     @Test
+    @DisplayName("register User with short password")
     public void registerUserWithShortPassword() {
         // укорачиваю пароль
         String newPassword = user.getPassword().substring(0, 5);

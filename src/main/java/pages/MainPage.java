@@ -1,6 +1,7 @@
 package pages;
 
 import configure.EnvConfig;
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.openqa.selenium.By;
@@ -27,15 +28,18 @@ public class MainPage {
     private final By sauce = By.xpath(".//span[text()='Соусы']/parent::div");
     private final By filling = By.xpath(".//span[text()='Начинки']/parent::div");
 
+    @Step("open browser")
     public MainPage open() {
         driver.get(EnvConfig.BASE_URL);
         return this;
     }
 
+    @Step("click on button enter to account")
     public void clickOnButtonEnterToAccount() {
         driver.findElement(buttonEnterToAccount).click();
     }
 
+    @Step("get access token from local storage")
     public String getAccessTokenFromLocalStorage() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(headerCreateBurger));
@@ -44,6 +48,7 @@ public class MainPage {
         return localStorage.getItem("accessToken");
     }
 
+    @Step("check login successfully")
     public MainPage checkLoginSuccessfully() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(createOrderButton));
@@ -52,15 +57,18 @@ public class MainPage {
         return this;
     }
 
+    @Step("click on personal account")
     public void clickOnPersonalAccount() {
         driver.findElement(personalAccountButton).click();
     }
 
+    @Step("click on logo")
     public MainPage clickOnLogo() {
         driver.findElement(logo).click();
         return this;
     }
 
+    @Step("check switch to main page")
     public void checkSwitchToMainPage() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(headerCreateBurger));
@@ -68,31 +76,35 @@ public class MainPage {
         assertTrue(driver.findElement(headerCreateBurger).isDisplayed());
     }
 
+    @Step("click on constructor")
     public MainPage clickOnConstructor() {
         driver.findElement(constructor).click();
         return this;
     }
 
+    @Step("click on sauce")
     public MainPage clickOnSauce() {
         driver.findElement(sauce).click();
         return this;
     }
 
+    @Step("check sauce is selected")
     public MainPage checkSauceIsSelected() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(sauce));
 
         assertTrue(new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                         .until(ExpectedConditions.attributeContains(sauce, "class", "current")));
-
         return this;
     }
 
+    @Step("click on filling")
     public MainPage clickOnFilling() {
         driver.findElement(filling).click();
         return this;
     }
 
+    @Step("check filling is selected")
     public void checkFillingIsSelected() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(filling));

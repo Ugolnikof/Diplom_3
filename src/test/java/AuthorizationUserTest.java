@@ -32,6 +32,7 @@ public class AuthorizationUserTest {
     }
 
     @Test
+    @DisplayName("authorize User by button on mane page")
     public void authorizeUserByButtonOnManePage() {
         WebDriver driver = driverRule.getDriver();
 
@@ -48,6 +49,7 @@ public class AuthorizationUserTest {
     }
 
     @Test
+    @DisplayName("authorize User from personal account")
     public void authorizeUserFromPersonalAccount() {
         WebDriver driver = driverRule.getDriver();
 
@@ -64,6 +66,7 @@ public class AuthorizationUserTest {
     }
 
     @Test
+    @DisplayName("authorize User from register page")
     public void authorizeUserFromRegisterPage() {
         WebDriver driver = driverRule.getDriver();
 
@@ -85,6 +88,7 @@ public class AuthorizationUserTest {
     }
 
     @Test
+    @DisplayName("authorize User from password recovery page")
     public void authorizeUserFromPasswordRecoveryPage() {
         WebDriver driver = driverRule.getDriver();
 

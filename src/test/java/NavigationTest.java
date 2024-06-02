@@ -31,6 +31,7 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("go to personal account")
     public void goToPersonalAccount() {
         WebDriver driver = driverRule.getDriver();
 
@@ -51,6 +52,7 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("go to main page by click on logo")
     public void goToMainPageByClickLogo() {
         WebDriver driver = driverRule.getDriver();
 
@@ -74,6 +76,7 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("go to main page by click on constructor")
     public void goToMainPageByClickConstructor() {
         WebDriver driver = driverRule.getDriver();
 
@@ -97,6 +100,7 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("exit from account")
     public void exitFromAccount() {
         WebDriver driver = driverRule.getDriver();
 
@@ -120,6 +124,7 @@ public class NavigationTest {
     }
 
     @Test
+    @DisplayName("switching between burger sections")
     public void switchingBetweenBurgerSections() {
         WebDriver driver = driverRule.getDriver();
 

@@ -12,3 +12,9 @@ mvn test
 ```bash
 mvn -Dbrowser=yandex -Ddriver.version=122.0.6261.128 -Dwebdriver.yandex.bin=C:\\Users\\mikhail.ugolnikov\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe test
 ```
+
+### Запуск отчёта allure
+
+```bash
+mvn allure:serve
+```

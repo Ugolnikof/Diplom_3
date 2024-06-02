@@ -1,6 +1,7 @@
 package pages;
 
 import configure.EnvConfig;
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.openqa.selenium.By;
@@ -18,6 +19,7 @@ public class PersonalAccount {
     private final WebDriver driver;
     private final By exitButton = By.xpath(".//button[text()='Выход']");
 
+    @Step("check switch to account")
     public PersonalAccount checkSwitchToAccount() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(exitButton));
@@ -26,6 +28,7 @@ public class PersonalAccount {
         return this;
     }
 
+    @Step("exit from account")
     public void exitFromAccount() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(exitButton));

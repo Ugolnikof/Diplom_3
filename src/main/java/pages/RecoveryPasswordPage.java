@@ -1,6 +1,7 @@
 package pages;
 
 import configure.EnvConfig;
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.openqa.selenium.By;
@@ -16,6 +17,7 @@ public class RecoveryPasswordPage {
     private final WebDriver driver;
     private final By linkToEnterToAccount = By.xpath(".//a[text()='Войти']");
 
+    @Step("click on link to enter account")
     public void clickOnLinkToEnterAccount() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(linkToEnterToAccount));

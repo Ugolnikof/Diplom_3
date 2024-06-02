@@ -1,6 +1,7 @@
 package pages;
 
 import configure.EnvConfig;
+import io.qameta.allure.Step;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.openqa.selenium.By;
@@ -23,6 +24,7 @@ public class LoginPage {
     private final By buttonEnter = By.xpath(".//button[text()='Войти']");
     private final By linkToRecoveryPassword = By.xpath(".//a[text()='Восстановить пароль']");
 
+    @Step("click on link to authorize")
     public void clickOnLinkToAuthorize() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(fieldEmail));
@@ -30,6 +32,7 @@ public class LoginPage {
         driver.findElement(linkToAuthorize).click();
     }
 
+    @Step("check register successfully")
     public void checkRegisterSuccessfully() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(buttonEnter));
@@ -37,20 +40,24 @@ public class LoginPage {
         assertTrue(driver.findElement(buttonEnter).isDisplayed());
     }
 
+    @Step("click on button enter")
     public void clickOnButtonEnter() {
         driver.findElement(buttonEnter).click();
     }
 
+    @Step("enter password")
     public LoginPage enterPassword(User user) {
         driver.findElement(fieldPassword).sendKeys(user.getPassword());
         return this;
     }
 
+    @Step("enter email")
     public LoginPage enterEmail(User user) {
         driver.findElement(fieldEmail).sendKeys(user.getEmail());
         return this;
     }
 
+    @Step("click on link to recover password")
     public void clickOnLinkToRecoverPassword() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(linkToRecoveryPassword));
@@ -58,6 +65,7 @@ public class LoginPage {
         driver.findElement(linkToRecoveryPassword).click();
     }
 
+    @Step("check logout successfully")
     public void checkLogoutSuccessfully() {
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.DEFAULT_TIMEOUT))
                 .until(ExpectedConditions.visibilityOfElementLocated(buttonEnter));
