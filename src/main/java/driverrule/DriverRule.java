@@ -1,4 +1,4 @@
-package driverRule;
+package driverrule;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.Getter;
